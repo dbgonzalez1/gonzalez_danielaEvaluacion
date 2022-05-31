@@ -4,28 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/components/forms/">
     <title>Cliente</title>
 </head>
 <body>
     <form>
         <div class="form-group">
           <label for="exampleFormControlTextarea1">Nombre:</label>
-          <input type="text" class="form-control" id="nombre" value="POST">
+          <input type="text" class="form-control" id="nombre">
         </div>
         <div class="form-group">
           <label for="exampleFormControlTextarea1">Teléfono</label>
-          <input type="phone" class="form-control" id="telefono" value="POST">
+          <input type="phone" class="form-control" id="telefono">
         </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Cuenta</label>
-            <input type="phone" class="form-control" id="telefono" value="POST">
+            <input type="phone" class="form-control" id="cuenta">
           </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Estado</label>
-            <input type="text" class="form-control" id="estado" value="POST">
+            <select onclick="estadoCliente" >
+                <option value="normal">Normal</option>
+                <option value="caso">Caso</option>
+                <option value="cercano">Cercano</option>
+            </select>
           </div>
         <button type="submit" class="btn btn-primary">Registrar</button>
+        <button type="submit" class="btn btn-primary">Ver Historial</button>
+        <button type="submit" class="btn btn-primary">Ver Estado</button>
       </form>
-      
+
 </body>
+<script>
+    function estadoCliente(){
+        
+    }
+            
+</script>
 </html>
