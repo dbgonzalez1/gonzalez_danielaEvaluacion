@@ -16,7 +16,14 @@ def iniciosesion():
 @app.route('/cliente')
 def cliente():
     return render_template('cliente.html') 
- 
+
+@app.route('/tienda')
+def tienda():
+    return render_template('tienda.html') 
+
+@app.route('/admin')
+def admin():
+    return render_template('admin.html') 
 
 #---------------------------------------
 #---------------------------------------
