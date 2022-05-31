@@ -24,7 +24,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Cuenta</label>
-            <input type="phone" class="form-control" id="cuenta" name="telefono">
+            <input type="phone" class="form-control" id="cuenta" name="cuenta">
         </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1" id="estado" name="estado">Estado</label>
@@ -34,27 +34,91 @@
                 <option class="form-control" value="cercano">Cercano</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary" onclick="cliente.html" >Registrar</button>
+        <button type="submit" class="btn btn-primary" onclick="agregarDatos();" >Registrar</button>
         <button type="submit" class="btn btn-primary" onclick="admin.html" >Ver Historial</button>
         <button type="submit" class="btn btn-primary" onclick="admin.html" >Ver Estado</button>
     </form>
 
+    <!--TABLA VISUALIZAR-->
+    <div class="sitio">
+        <div class="contenedor">
+            <h1>Administrador</h1>
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th>Detalles Cliente</th>
+                        <th>Detalles Tienda</th>
+                        <th>Historial Vistas</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            </div>
+        </div>
+    </div>
 </body>
 <script>
+    /*funcion para verificar el ingreso de datos*/
     function estadoCliente() {
         var isEmpty = false,
-            estado = document.getElementById("estado").value;
-        if (estado === "normal") {
-            alert("El cliente es normal sin COVID-19")
+            nombre = document.getElementById("nombre").value,
+            telefono = document.getElementById("telefono").value,
+            estado = document.getElementById("estado").value,
+            cuenta = document.getElementById("cuenta").value;
+
+        if (nombre === "") {
+            alert("Ingrese su nombre");
             isEmpty = true;
-        } else if (estado === "caso") {
-            alert("El cliente es un caso de COVID-19 positivo.")
+        } else if (telefono === "") {
+            alert("Ingrese telefono");
             isEmpty = true;
-        } else if (estado === "cercano") {
-            alert("El cliente es un contacto cercano de un caso")
+        } else if (estado === "") {
+            alert("Ingrese estado");
+            isEmpty = true;
+        } else if (cuenta === "") {
+            alert("Ingrese cuenta");
             isEmpty = true;
         }
         return isEmpty;
+    }
+    function agregarDatos() {
+        if (!estadoCliente()) {
+            var newRow = table.insertRow(table.length),
+                cell1 = newRow.insertCell(0),
+                cell2 = newRow.insertCell(1),
+                cell3 = newRow.insertCell(2),
+
+                nombre = document.getElementById("nombre").value,
+                telefono = document.getElementById("telefono").value,
+                estado = document.getElementById("estado").value;
+                cuenta = document.getElementById("cuenta").value;
+
+            cell1.innerHTML = nombre;
+            cell2.innerHTML = telefono;
+            cell3.innerHTML = estado;
+            cell3.innerHTML = cuenta;
+
+
+            /*Llama al elemento set y agrega*/
+            seleccionarDato();
+        }
+        /*Funcion para seleccionar dato de la tabla*/
+    function seleccionarDato() {
+        for (var i = 1; i < table.rows.length; i++) {
+            table.rows[i].onclick = function () {
+                // get the seected row index
+                tIndex = this.rowIndex;
+                document.getElementById("nombre").value = this.cells[0].innerHTML;
+                document.getElementById("telefono").value = this.cells[1].innerHTML;
+                document.getElementById("estado").value = this.cells[2].innerHTML;
+                document.getElementById("cuenta").value = this.cells[3].innerHTML;
+            };
+        }
+    }
     }
 </script>
 
